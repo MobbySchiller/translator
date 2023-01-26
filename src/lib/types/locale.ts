@@ -9,6 +9,11 @@ export type Dictionary = {
         input: {
             placeholder: string,
         },
+        message: {
+            tryAgain: string,
+            error: string,
+            empty: string,
+        },
         footer: {
             credits: string,
         },

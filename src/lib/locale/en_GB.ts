@@ -9,7 +9,7 @@ export const en_GB: Dictionary = {
             github: 'Github',
         },
         footer: {
-            credits: 'MobbySchiller 2023'
+            credits: 'created by MobbySchiller'
         }
     }
 }

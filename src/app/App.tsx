@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import { theme } from '../lib/styles/theme'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import TranslatorScreen from '../components/TranslatorScreen'
+import Header from '../lib/components/Header'
+import Footer from '../lib/components/Footer'
+import TranslatorScreen from '../features/translator/TranslatorScreen'
 
 export const App: FC = () => {
 

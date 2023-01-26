@@ -1,11 +1,14 @@
 import { APP_CONFIG } from '../config/config'
 import styled from 'styled-components'
+import useTranslations from '../hooks/useTranslations'
 
 const Footer = () => {
+    const T = useTranslations()
+
     return (
         <FooterContainer>
             <Link href={APP_CONFIG.GITHUB_URL}>
-                MobbySchiller 2023
+                {T.components.footer.credits}
             </Link>
         </FooterContainer>
     )

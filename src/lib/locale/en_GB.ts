@@ -7,6 +7,9 @@ export const en_GB: Dictionary = {
             title: 'Translator',
             api: 'API',
             github: 'Github',
+        },
+        footer: {
+            credits: 'MobbySchiller 2023'
         }
     }
 }

@@ -5,6 +5,9 @@ export type Dictionary = {
             title: string,
             api: string,
             github: string,
+        },
+        footer: {
+            credits: string,
         }
     }
 }

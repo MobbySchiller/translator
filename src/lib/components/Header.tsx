@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import useTranslations from '../hooks/useTranslations'
-import logo from '../assets/logo.jpg'
+import logo from '../../assets/logo.jpg'
 import { APP_CONFIG } from '../config/config'
 
 const Header = () => {
@@ -37,6 +37,7 @@ const HeaderContainer = styled.header`
     justify-content: space-between;
     padding: 4px 12px;
     background-color: ${({ theme }) => theme.colors.foreground};
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     color: ${({ theme }) => theme.colors.secondary}
 `
 

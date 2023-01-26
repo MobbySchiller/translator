@@ -6,8 +6,11 @@ export type Dictionary = {
             api: string,
             github: string,
         },
+        input: {
+            placeholder: string,
+        },
         footer: {
             credits: string,
-        }
+        },
     }
 }

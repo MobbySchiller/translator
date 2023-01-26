@@ -13,6 +13,21 @@ const Selector = () => {
 
 const Select = styled.select`
     margin-left: 30px;
+    padding: 10px 20px;
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    color: ${({ theme }) => theme.colors.secondary};
+    outline-color: ${({ theme }) => theme.colors.secondary};
+
+    &:hover {
+        color: ${({ theme }) => theme.colors.primary};
+    }
+
+    &:focus {
+        border-color: ${({ theme }) => theme.colors.secondary};
+    }
 `
 
 

@@ -1,9 +1,11 @@
 import styled from 'styled-components'
+import useTranslations from '../hooks/useTranslations'
 
 const Input = () => {
+    const T = useTranslations()
 
     return (
-        <TranslatorInput placeholder='Enter the text to be translated' />
+        <TranslatorInput placeholder={T.components.input.placeholder} />
     )
 }
 

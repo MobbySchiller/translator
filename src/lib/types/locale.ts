@@ -4,6 +4,10 @@ export type Dictionary = {
     },
     appName: string,
     components: {
+        app: {
+            error: string,
+            empty: string,
+        },
         header: {
             title: string,
             api: string,
@@ -14,8 +18,6 @@ export type Dictionary = {
         },
         message: {
             tryAgain: string,
-            error: string,
-            empty: string,
         },
         footer: {
             credits: string,

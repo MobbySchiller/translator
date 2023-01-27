@@ -31,7 +31,7 @@ export const App: FC = () => {
         if (hasError) {
             return (
                 <Message
-                    message={T.components.message.error}
+                    message={T.components.app.error}
                     withButton
                     onClick={() => getSupportedLanguages()}
                 />
@@ -41,7 +41,7 @@ export const App: FC = () => {
         if (languages.length === 0) {
             return (
                 <Message
-                    message={T.components.message.empty}
+                    message={T.components.app.empty}
                 />
             )
         }

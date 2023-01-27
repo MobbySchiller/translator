@@ -6,6 +6,10 @@ export const en_GB: Dictionary = {
     },
     appName: 'Translator',
     components: {
+        app: {
+            error: 'Something went wrong',
+            empty: 'No supported language',
+        },
         header: {
             title: 'Translator',
             api: 'API',
@@ -16,8 +20,6 @@ export const en_GB: Dictionary = {
         },
         message: {
             tryAgain: 'Try Again',
-            error: 'Something went wrong',
-            empty: 'No supported language',
         },
         footer: {
             credits: 'created by MobbySchiller'

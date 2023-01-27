@@ -1,12 +1,19 @@
 import { FC } from 'react'
 import styled from 'styled-components'
+import { MAX_INPUT_LENGTH } from '../../features/translator/TranslatorScreen'
 
-const TranslatorInfo: FC = () => {
+type TranslatorInfoProps = {
+    inputValue: string
+}
+
+const TranslatorInfo: FC<TranslatorInfoProps> = ({ inputValue }) => {
 
     return (
         <Container>
             <LanguageHint>Spanish</LanguageHint>
-            <TypesCounter>120/3000</TypesCounter>
+            <TypesCounter>
+                {inputValue.length}/{MAX_INPUT_LENGTH}
+            </TypesCounter>
         </Container>
     )
 }

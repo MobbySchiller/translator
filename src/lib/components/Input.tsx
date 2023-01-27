@@ -1,11 +1,27 @@
+import { FC } from 'react'
 import styled from 'styled-components'
 import useTranslations from '../hooks/useTranslations'
 
-const Input = () => {
+type InputProps = {
+    value?: string,
+    onChange?(newValue: string): void
+}
+
+const Input: FC<InputProps> = ({ value, onChange }) => {
     const T = useTranslations()
 
     return (
-        <TranslatorInput placeholder={T.components.input.placeholder} />
+        <TranslatorInput
+            autoFocus
+            maxLength={5000}
+            placeholder={T.components.input.placeholder}
+            value={value}
+            onChange={(event) => {
+                if (onChange) {
+                    onChange(event.target.value)
+                }
+            }}
+        />
     )
 }
 

@@ -4,12 +4,14 @@ import Selector from '../../lib/components/Selector'
 import { Language, LanguageCode } from '../models/Languages'
 import { SelectedLanguages } from '../types/selectedLanguages'
 import ExchangeLanguage from './ExchangeLanguage'
+import { Query } from '../models/Query'
 
 type TranslatorHeader = {
+    setQuery: React.Dispatch<React.SetStateAction<Query>>,
     languages: Array<Language>
 }
 
-const TranslatorHeader: FC<TranslatorHeader> = ({ languages }) => {
+const TranslatorHeader: FC<TranslatorHeader> = ({ setQuery, languages }) => {
     const [selectedLanguages, setSelectedLanguages] = useState<SelectedLanguages>({
         source: LanguageCode.Auto,
         target: LanguageCode.English
@@ -41,10 +43,17 @@ const TranslatorHeader: FC<TranslatorHeader> = ({ languages }) => {
             </SelectorContainer>
             <ExchangeLanguage
                 hidden={selectedLanguages.source === LanguageCode.Auto}
-                onClick={() => setSelectedLanguages(prevState => ({
-                    source: prevState.target,
-                    target: prevState.source
-                }))}
+                onClick={() => {
+                    setSelectedLanguages(prevState => ({
+                        source: prevState.target,
+                        target: prevState.source
+                    }))
+                    setQuery(prevState => ({
+                        inputValue: prevState.outputValue,
+                        outputValue: prevState.inputValue
+                    }))
+                }
+                }
             />
         </Container>
     )

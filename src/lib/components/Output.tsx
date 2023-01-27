@@ -1,11 +1,16 @@
+import { FC } from 'react'
 import styled from 'styled-components'
 import Loader from './Loader'
 
-const Output = () => {
+type OutputProps = {
+    value: string
+}
+
+const Output: FC<OutputProps> = ({ value }) => {
 
     return (
         <TranslatorOutput>
-            <p>tekstowo</p>
+            <p>{value}</p>
             {/* <Loader /> */}
         </TranslatorOutput>
     )

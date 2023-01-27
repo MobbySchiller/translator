@@ -1,12 +1,36 @@
+import { FC } from 'react'
 import styled from "styled-components"
+import { Language, LanguageCode } from "../models/Languages"
 
-const Selector = () => {
+type SelectorProps = {
+    languages: Array<Language>,
+    selectedLanguage: LanguageCode,
+    exclude: Array<LanguageCode>,
+    onChange(newCode: LanguageCode): void,
+}
+
+const Selector: FC<SelectorProps> = ({ languages, selectedLanguage, exclude, onChange }) => {
+
+    const filteredLanguages = languages
+        .filter(language => !exclude.includes(language.code))
+        .map(languages => ({
+            key: languages.code,
+            label: languages.name
+        }))
 
     return (
-        <Select>
-            <option value="polish">polish</option>
-            <option value="english">english</option>
-            <option value="french">french</option>
+        <Select
+            value={selectedLanguage}
+            onChange={event => onChange(event.target.value as LanguageCode)}
+        >
+            {filteredLanguages.map(language => (
+                <option
+                    key={language.key}
+                    value={language.key}
+                >
+                    {language.label}
+                </option>
+            ))}
         </Select>
     )
 }

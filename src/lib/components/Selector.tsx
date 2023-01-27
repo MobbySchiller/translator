@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import styled from "styled-components"
 import { Language, LanguageCode } from "../models/Languages"
 
@@ -11,12 +11,12 @@ type SelectorProps = {
 
 const Selector: FC<SelectorProps> = ({ languages, selectedLanguage, exclude, onChange }) => {
 
-    const filteredLanguages = languages
+    const filteredLanguages = useMemo(() => languages
         .filter(language => !exclude.includes(language.code))
         .map(languages => ({
             key: languages.code,
             label: languages.name
-        }))
+        })), [languages, exclude])
 
     return (
         <Select

@@ -1,10 +1,9 @@
 import { FC, useState } from 'react'
 import styled from 'styled-components'
 import Selector from '../../lib/components/Selector'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Language, LanguageCode } from '../models/Languages'
 import { SelectedLanguages } from '../types/selectedLanguages'
+import ExchangeLanguage from './ExchangeLanguage'
 
 type TranslatorHeader = {
     languages: Array<Language>
@@ -12,7 +11,7 @@ type TranslatorHeader = {
 
 const TranslatorHeader: FC<TranslatorHeader> = ({ languages }) => {
     const [selectedLanguages, setSelectedLanguages] = useState<SelectedLanguages>({
-        source: LanguageCode.Polish,
+        source: LanguageCode.Auto,
         target: LanguageCode.English
     })
 
@@ -32,7 +31,7 @@ const TranslatorHeader: FC<TranslatorHeader> = ({ languages }) => {
             <SelectorContainer>
                 <Selector
                     languages={languages}
-                    exclude={[selectedLanguages.source]}
+                    exclude={[selectedLanguages.source, LanguageCode.Auto]}
                     onChange={newCode => setSelectedLanguages(prevState => ({
                         ...prevState,
                         target: newCode
@@ -40,9 +39,13 @@ const TranslatorHeader: FC<TranslatorHeader> = ({ languages }) => {
                     selectedLanguage={selectedLanguages.target}
                 />
             </SelectorContainer>
-            <FontAwesomeContainer>
-                <FontAwesomeIcon icon={faArrowRightArrowLeft} />
-            </FontAwesomeContainer>
+            <ExchangeLanguage
+                hidden={selectedLanguages.source === LanguageCode.Auto}
+                onClick={() => setSelectedLanguages(prevState => ({
+                    source: prevState.target,
+                    target: prevState.source
+                }))}
+            />
         </Container>
     )
 }
@@ -59,15 +62,6 @@ const Container = styled.div`
 
 const SelectorContainer = styled.div`
     width: 50%;
-`
-
-const FontAwesomeContainer = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: ${({ theme }) => theme.colors.secondary};
-    font-size: 20px;
 `
 
 export default TranslatorHeader

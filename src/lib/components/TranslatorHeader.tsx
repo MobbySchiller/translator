@@ -9,13 +9,14 @@ import { Query } from '../models/Query'
 type TranslatorHeader = {
     setQuery: React.Dispatch<React.SetStateAction<Query>>,
     languages: Array<Language>
+    selector: {
+        selectedLanguages: SelectedLanguages,
+        setSelectedLanguages: React.Dispatch<React.SetStateAction<SelectedLanguages>>
+    }
 }
 
-const TranslatorHeader: FC<TranslatorHeader> = ({ setQuery, languages }) => {
-    const [selectedLanguages, setSelectedLanguages] = useState<SelectedLanguages>({
-        source: LanguageCode.Auto,
-        target: LanguageCode.English
-    })
+const TranslatorHeader: FC<TranslatorHeader> = ({ setQuery, languages, selector }) => {
+    const { selectedLanguages, setSelectedLanguages } = selector
 
     return (
         <Container>

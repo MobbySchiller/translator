@@ -21,6 +21,10 @@ export const en_GB: Dictionary = {
         message: {
             tryAgain: 'Try Again',
         },
+        translatorInfo: {
+            change: 'change to',
+            error: 'Unknown language'
+        },
         footer: {
             credits: 'created by MobbySchiller'
         },

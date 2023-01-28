@@ -19,6 +19,10 @@ export type Dictionary = {
         message: {
             tryAgain: string,
         },
+        translatorInfo: {
+            change: string,
+            error: string
+        },
         footer: {
             credits: string,
         },

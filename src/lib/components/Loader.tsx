@@ -7,7 +7,6 @@ const Loader = () => {
     )
 }
 
-
 const Spinner = styled.div`
     position: absolute;
     top: 50%;

@@ -1,13 +1,13 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import Input from './Input'
 import Output from './Output'
 import { Query } from '../models/Query'
 import { SelectedLanguages } from '../types/selectedLanguages'
 import { LanguageCode } from '../models/Languages'
-import useAutoDetectLanguage from '../hooks/useAutoDetectLanguage'
 import { useDebouncedCallback } from 'use-debounce'
 import { APP_CONFIG } from '../config/config'
+import useTranslateText from '../../lib/hooks/useTranslateText'
 
 type TranslatorBodyProps = {
     input: {
@@ -19,6 +19,7 @@ type TranslatorBodyProps = {
 }
 
 const TranslatorBody: FC<TranslatorBodyProps> = ({ input, selectedLanguages, autoDetectLanguage }) => {
+    const [translatedText, setTranslatedText] = useState<string>('')
     const { query, setQuery } = input
 
     const debouncedAutoDetectLanguage = useDebouncedCallback(
@@ -29,6 +30,12 @@ const TranslatorBody: FC<TranslatorBodyProps> = ({ input, selectedLanguages, aut
             }
         }, 1000
     )
+
+    const {
+        isLoading: isTranslatingText,
+        hasError: hasErrorTranslatingText,
+        fetch: translateText
+    } = useTranslateText(setTranslatedText)
 
     return (
         <Container>
